@@ -6,4 +6,6 @@ public class Cobranca
     public decimal Valor{ get; set; }
     public DateTime DataVencimento { get; set; }
     public int Pago { get; set; }
+    public int ClienteId { get; set; }
+    public Cliente Cliente { get; set; }
 }

@@ -6,4 +6,6 @@ public class Cliente
     public string? Documento { get; set; }
     public string? Telefone { get; set; }
     public string? Endereco { get; set; }
+    public Usuario Usuario{ get; set; }
+    public ICollection<Cobranca> Cobrancas{ get; set; }
 }
