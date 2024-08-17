@@ -1,5 +1,6 @@
 ﻿using Controle.Api.Context;
 using Controle.Api.Models;
+using Controle.Api.Repositories.Contratos;
 using Microsoft.EntityFrameworkCore;
 
 namespace Controle.Api.Repositories;

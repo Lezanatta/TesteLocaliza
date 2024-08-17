@@ -1,6 +1,6 @@
 ﻿using Controle.Api.Models;
 
-namespace Controle.Api.Repositories;
+namespace Controle.Api.Repositories.Contratos;
 
 public interface IUsuarioRepository
 {

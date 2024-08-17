@@ -1,5 +1,5 @@
 ﻿using Controle.Api.Models;
-using Controle.Api.Repositories;
+using Controle.Api.Repositories.Contratos;
 using Controle.Api.Services.Contracts;
 
 namespace Controle.Api.Services;
