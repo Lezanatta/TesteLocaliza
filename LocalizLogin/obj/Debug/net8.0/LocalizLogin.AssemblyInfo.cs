@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("Controle.Api")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("LocalizLogin")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0239ba82153eec42b340a91a51352f34436420b")]
-[assembly: System.Reflection.AssemblyProductAttribute("Controle.Api")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Controle.Api")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+632c0ff9000cf4c4fa7f78156176c3b587434b1f")]
+[assembly: System.Reflection.AssemblyProductAttribute("LocalizLogin")]
+[assembly: System.Reflection.AssemblyTitleAttribute("LocalizLogin")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Gerado pela classe WriteCodeFragment do MSBuild.
