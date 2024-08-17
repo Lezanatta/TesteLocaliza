@@ -8,6 +8,8 @@ public class ClienteRepository(LocalizaContext _context) : IClienteRepository
 {
     public async Task<IEnumerable<Cliente>> ObterClientes() => await _context.Cliente.ToListAsync();
 
+    public async Task<IEnumerable<Cliente>> ObterClientesCobrancas() => await _context.Cliente.Include(cob => cob.Cobrancas).ToListAsync();
+
     public async Task AdicionarCliente(Cliente cliente)
     {
         _context.Cliente.Add(cliente);

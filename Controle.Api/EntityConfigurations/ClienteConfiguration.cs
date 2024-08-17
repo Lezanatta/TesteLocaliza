@@ -11,10 +11,17 @@ public class ClienteConfiguration : IEntityTypeConfiguration<Cliente>
         builder.Property(c => c.Nome).HasColumnName("Nome");
         builder.Property(c => c.Telefone).HasColumnName("Telefone");
         builder.Property(c => c.Endereco).HasColumnName("Endereco");
+        builder.Property(c => c.UsuarioId).HasColumnName("UsuarioId");
 
         builder.HasKey(c => c.Id);
 
-        builder.HasOne(c => c.Usuario).WithMany(c => c.Clientes).IsRequired().OnDelete(DeleteBehavior.Cascade);
-        builder.HasMany(c => c.Cobrancas).WithOne(c => c.Cliente);
+        builder.HasOne(c => c.Usuario)
+               .WithMany(c => c.Clientes)
+               .HasForeignKey(c => c.UsuarioId)
+               .IsRequired()
+               .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasMany(c => c.Cobrancas)
+               .WithOne(c => c.Cliente);
     }
 }

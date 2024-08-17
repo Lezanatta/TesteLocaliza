@@ -4,9 +4,12 @@ using Controle.Api.Repositories.Contratos;
 using Controle.Api.Services;
 using Controle.Api.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllers().AddJsonOptions(x =>
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

@@ -21,7 +21,7 @@ public class CobrancaRepository(LocalizaContext _context) : ICobrancaRepository
 
     public async Task Deletar(int id)
     {
-        var cobranca = await _context.Cobranca.Where(cli => cli.Id == id).FirstOrDefaultAsync();
+        var cobranca = await _context.Cobranca.Where(cli => cli.IdCobranca == id).FirstOrDefaultAsync();
 
         _context.Cobranca.Remove(cobranca);
 

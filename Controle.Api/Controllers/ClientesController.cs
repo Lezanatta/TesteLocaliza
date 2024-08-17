@@ -18,6 +18,16 @@ public class ClientesController(IServiceCliente _service) : ControllerBase
         return Ok(clientes);
     }
 
+    [HttpGet("cobrancas")]
+    public async Task<ActionResult<IEnumerable<Cliente>>> GetClientesCobrancas()
+    {
+        var clientes = await _service.ObterClientesCobrancas();
+
+        if (clientes is null) return NotFound("Não existem clientes cadastrados");
+
+        return Ok(clientes);
+    }
+
     [HttpPost]
     public async Task<ActionResult> Post([FromBody] Cliente cliente)
     {

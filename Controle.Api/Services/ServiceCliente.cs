@@ -7,6 +7,8 @@ public class ServiceCliente(IClienteRepository _repository) : IServiceCliente
 {
     public async Task<IEnumerable<Cliente>> ObterClientesCadastrados() => await _repository.ObterClientes();
 
+    public async Task<IEnumerable<Cliente>> ObterClientesCobrancas() => await _repository.ObterClientesCobrancas();
+
     public async Task AdicionarNovoCliente(Cliente cliente) => await _repository.AdicionarCliente(cliente);
 
     public async Task AtualizarCliente(Cliente cliente) => await _repository.Atualizar(cliente);

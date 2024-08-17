@@ -12,7 +12,7 @@ public class LocalizaContext(DbContextOptions<LocalizaContext> options) : DbCont
     {
         modelBuilder.ApplyConfiguration(new ClienteConfiguration());
 
-        modelBuilder.ApplyConfiguration(new ClienteConfiguration());
+        modelBuilder.ApplyConfiguration(new CobrancaConfiguration());
 
         modelBuilder.ApplyConfiguration(new UsuarioConfiguration());
 
