@@ -1,5 +1,5 @@
-﻿using Controle.Api.Context;
-using Controle.Api.Models;
+﻿using Compartilhado.Context;
+using Compartilhado.Models;
 using Controle.Api.Repositories.Contratos;
 using Microsoft.EntityFrameworkCore;
 

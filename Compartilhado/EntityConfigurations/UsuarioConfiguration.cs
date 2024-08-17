@@ -1,8 +1,8 @@
-﻿using LocalizLogin.Models;
+﻿using Compartilhado.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace LocalizLogin.EntityConfigurations;
+namespace Compartilhado.EntityConfigurations;
 public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
 {
     public void Configure(EntityTypeBuilder<Usuario> builder)

@@ -1,4 +1,4 @@
-﻿using Controle.Api.Models;
+﻿using Compartilhado.Models;
 
 namespace Controle.Api.Services.Contracts;
 public interface IServiceCobranca

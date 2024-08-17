@@ -1,8 +1,8 @@
-﻿using Controle.Api.EntityConfigurations;
-using Controle.Api.Models;
+﻿using Compartilhado.EntityConfigurations;
+using Compartilhado.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Controle.Api.Context;
+namespace Compartilhado.Context;
 public class LocalizaContext(DbContextOptions<LocalizaContext> options) : DbContext(options)
 {
     public DbSet<Cliente> Cliente { get; set; }

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Controle.Api.Models;
+namespace Compartilhado.Models;
 public class Cobranca
 {
     public int IdCobranca{ get; set; }

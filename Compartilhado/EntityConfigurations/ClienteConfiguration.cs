@@ -1,8 +1,8 @@
-﻿using Controle.Api.Models;
+﻿using Compartilhado.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Controle.Api.EntityConfigurations;
+namespace Compartilhado.EntityConfigurations;
 public class ClienteConfiguration : IEntityTypeConfiguration<Cliente>
 {
     public void Configure(EntityTypeBuilder<Cliente> builder)

@@ -1,4 +1,4 @@
-﻿using LocalizLogin.Models;
+﻿using Compartilhado.Models;
 using LocalizLogin.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,19 +9,23 @@ namespace LocalizLogin.Controllers;
 public class LoginController(IServiceLogin _loginService, IConfiguration _config) : ControllerBase
 {
     [HttpPost("login")]
-    public async Task<ActionResult> Login([FromBody] Usuario usuario)
+    public async Task<ActionResult> Login(ModelLogin modelLogin)
     {
         try
         {
-            if (usuario is null) return NotFound("Dados não preenchidos.");
+            if (modelLogin.Email is null || modelLogin.Senha is null) return NotFound("Dados não preenchidos.");
 
-            var resultado = await _loginService.Login(usuario, _config);
+            var resultado = await _loginService.Login(modelLogin, _config);
 
             return Ok(new { Mensagem = "Login realizado com sucesso.", Token = resultado});
         }
         catch(InvalidOperationException ex)
         {
             return Unauthorized(ex.Message);
+        }
+        catch (Exception)
+        {
+            return Unauthorized("Erro ao realizar o login.");
         }
     }
 }

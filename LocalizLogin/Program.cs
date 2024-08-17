@@ -1,4 +1,5 @@
-using LocalizLogin.Context;
+using Compartilhado.Context;
+using Compartilhado.Services;
 using LocalizLogin.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -16,8 +17,9 @@ builder.Services.AddSwaggerGen();
 
 var mysqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddDbContext<LocalizaLoginContext>(options => options.UseMySql(mysqlConnection, ServerVersion.AutoDetect(mysqlConnection)));
+builder.Services.AddDbContext<LocalizaContext>(options => options.UseMySql(mysqlConnection, ServerVersion.AutoDetect(mysqlConnection)));
 
+builder.Services.AddScoped<IServiceCriptografia, ServiceCriptografia>();
 builder.Services.AddScoped<IServiceLogin, ServiceLogin>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

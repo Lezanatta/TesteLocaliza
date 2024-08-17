@@ -1,4 +1,4 @@
-﻿using Controle.Api.Models;
+﻿using Compartilhado.Models;
 using Controle.Api.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 

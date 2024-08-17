@@ -1,7 +1,7 @@
-﻿using LocalizLogin.Models;
+﻿using Compartilhado.Models;
 
 namespace LocalizLogin.Services;
 public interface IServiceLogin
 {
-    Task<string> Login(Usuario usuario, IConfiguration config);
+    Task<string> Login(ModelLogin modelLogin, IConfiguration config);
 }

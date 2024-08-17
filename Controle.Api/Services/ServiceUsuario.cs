@@ -1,12 +1,17 @@
-﻿using Controle.Api.Models;
+﻿using Compartilhado.Models;
+using Compartilhado.Services;
 using Controle.Api.Repositories.Contratos;
 using Controle.Api.Services.Contracts;
 
 namespace Controle.Api.Services;
-public class ServiceUsuario(IUsuarioRepository _repository) : IServiceUsuario
+public class ServiceUsuario(IUsuarioRepository _repository, IServiceCriptografia _serviceCriptografia) : IServiceUsuario
 {
     public async Task AdicionarNovoUsuario(Usuario usuario)
     {
+        var senhaCriptografada = _serviceCriptografia.CriptografarSenha(usuario.Senha);
+
+        usuario.Senha = senhaCriptografada;
+
         await _repository.CriarUsuario(usuario);
     }
 

@@ -1,5 +1,6 @@
-﻿using LocalizLogin.Context;
-using LocalizLogin.Models;
+﻿using Compartilhado.Context;
+using Compartilhado.Models;
+using Compartilhado.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -9,14 +10,15 @@ using System.Text;
 
 namespace LocalizLogin.Services;
 
-public class ServiceLogin(LocalizaLoginContext _context) : IServiceLogin
+public class ServiceLogin(LocalizaContext _context, IServiceCriptografia _serviceCriptografia) : IServiceLogin
 {
-    public async Task<string> Login(Usuario usuario, IConfiguration configuration)
+    public async Task<string> Login(ModelLogin modelLogin, IConfiguration configuration)
     {
-        var usuarioEncontrado = await _context.Usuario
-                    .SingleOrDefaultAsync(u => u.Email == usuario.Email);
+        var usuarioEncontrado = await _context.Usuario.Where(usu => usu.Email == modelLogin.Email).FirstOrDefaultAsync();
 
-        if (usuarioEncontrado is null || !VerifyPassword(usuario.Senha, usuarioEncontrado.Senha))
+        var senhaConfirmada = _serviceCriptografia.VerificarSenha(modelLogin.Senha, usuarioEncontrado.Senha);
+
+        if (usuarioEncontrado is null || !senhaConfirmada)
             throw new InvalidOperationException("Usuario com dados inválidos.");
 
         var token = GeratTokenJwt(usuarioEncontrado, configuration);
@@ -44,11 +46,5 @@ public class ServiceLogin(LocalizaLoginContext _context) : IServiceLogin
         var token = tokenHandler.CreateToken(tokenDescriptor);
 
         return tokenHandler.WriteToken(token);
-    }
-
-    private static bool VerifyPassword(string senhaDigitada, string senhaSalvaUsuario)
-    {
-        return BCrypt.Net.BCrypt.Verify(senhaDigitada, senhaSalvaUsuario);
-        //string senhaHash = BCrypt.Net.BCrypt.HashPassword(senha);
     }
 }

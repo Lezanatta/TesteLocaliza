@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
-namespace Controle.Api.Models;
+namespace Compartilhado.Models;
 public class Cliente
 {
     public int Id{ get; set; }
