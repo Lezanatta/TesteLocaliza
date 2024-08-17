@@ -1,11 +1,13 @@
 ﻿using Compartilhado.Models;
 using Controle.Api.Services.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Controle.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class UsuariosController(IServiceUsuario _service) : ControllerBase
 {
     [HttpGet]

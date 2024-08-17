@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LocalizLogin")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89aaa9dee929d930038819c3d1f6cde82521a815")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2dd6406c63480d58f03f12f728d9c9e80f081c5e")]
 [assembly: System.Reflection.AssemblyProductAttribute("LocalizLogin")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LocalizLogin")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
