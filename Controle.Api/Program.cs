@@ -18,8 +18,11 @@ builder.Services.AddDbContext<LocalizaContext>(options => options.UseMySql(mysql
 
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<ICobrancaRepository, CobrancaRepository>();
+
 builder.Services.AddScoped<IServiceUsuario, ServiceUsuario>();
 builder.Services.AddScoped<IServiceCliente, ServiceCliente>();
+builder.Services.AddScoped<IServiceCobranca, ServiceCobranca>();
 
 var app = builder.Build();
 

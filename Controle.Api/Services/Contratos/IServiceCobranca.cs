@@ -1,7 +1,7 @@
 ﻿using Controle.Api.Models;
 
 namespace Controle.Api.Services.Contracts;
-public interface ICobrancaService
+public interface IServiceCobranca
 {
     Task<IEnumerable<Cobranca>> ObterCobrancasClientes();
     Task AdicionarNovaCobranca(Cobranca cobranca);

@@ -3,7 +3,7 @@ using Controle.Api.Repositories.Contratos;
 using Controle.Api.Services.Contracts;
 
 namespace Controle.Api.Services;
-public class CobrancaService(ICobrancaRepository _repository) : ICobrancaService
+public class ServiceCobranca(ICobrancaRepository _repository) : IServiceCobranca
 {
     public async Task<IEnumerable<Cobranca>> ObterCobrancasClientes() => await _repository.ObterCobrancas();
     public async Task AdicionarNovaCobranca(Cobranca cobranca) => await _repository.Adicionar(cobranca);

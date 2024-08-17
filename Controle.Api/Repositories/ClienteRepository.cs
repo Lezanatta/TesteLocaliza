@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Controle.Api.Repositories;
 public class ClienteRepository(LocalizaContext _context) : IClienteRepository
 {
+    public async Task<IEnumerable<Cliente>> ObterClientes() => await _context.Cliente.ToListAsync();
+
     public async Task AdicionarCliente(Cliente cliente)
     {
         _context.Cliente.Add(cliente);

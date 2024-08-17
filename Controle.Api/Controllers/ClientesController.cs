@@ -8,6 +8,16 @@ namespace Controle.Api.Controllers;
 [ApiController]
 public class ClientesController(IServiceCliente _service) : ControllerBase
 {
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Cliente>>> Get()
+    {
+        var clientes = await _service.ObterClientesCadastrados();
+
+        if (clientes is null) return NotFound("Não existem clientes cadastrados");
+
+        return Ok(clientes);
+    }
+
     [HttpPost]
     public async Task<ActionResult> Post([FromBody] Cliente cliente)
     {
@@ -15,7 +25,7 @@ public class ClientesController(IServiceCliente _service) : ControllerBase
 
         await _service.AdicionarNovoCliente(cliente);
 
-        return Ok("Cliente adicionado com sucesso.");
+        return CreatedAtAction(nameof(Get), new { }, cliente);
     }
 
     [HttpPut]
