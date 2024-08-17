@@ -1,11 +1,10 @@
-﻿using Controle.Api.Models;
-using Controle.Api.Repositories;
+﻿using Controle.Api.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Controle.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class ClientesController( : ControllerBase
+public class ClientesController(IServiceCliente _service) : ControllerBase
 {
 }

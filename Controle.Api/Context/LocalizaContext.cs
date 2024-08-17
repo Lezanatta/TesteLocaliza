@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Controle.Api.Context;
 public class LocalizaContext(DbContextOptions<LocalizaContext> options) : DbContext(options)
 {
-    public DbSet<Usuario> Cliente { get; set; }
+    public DbSet<Cliente> Cliente { get; set; }
     public DbSet<Cobranca> Cobranca { get; set; }
     public DbSet<Usuario> Usuario { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)

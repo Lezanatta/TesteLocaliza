@@ -1,5 +1,7 @@
 using Controle.Api.Context;
 using Controle.Api.Repositories;
+using Controle.Api.Services;
+using Controle.Api.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,8 @@ builder.Services.AddDbContext<LocalizaContext>(options => options.UseMySql(mysql
 
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<IServiceUsuario, ServiceUsuario>();
+builder.Services.AddScoped<IServiceCliente, ServiceCliente>();
 
 var app = builder.Build();
 
