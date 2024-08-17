@@ -1,4 +1,5 @@
-﻿using Controle.Api.Services.Contracts;
+﻿using Controle.Api.Models;
+using Controle.Api.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Controle.Api.Controllers;
@@ -7,4 +8,31 @@ namespace Controle.Api.Controllers;
 [ApiController]
 public class ClientesController(IServiceCliente _service) : ControllerBase
 {
+    [HttpPost]
+    public async Task<ActionResult> Post([FromBody] Cliente cliente)
+    {
+        if (cliente is null) return BadRequest("Dados inválidos!");
+
+        await _service.AdicionarNovoCliente(cliente);
+
+        return Ok("Cliente adicionado com sucesso.");
+    }
+
+    [HttpPut]
+    public async Task<ActionResult> Put([FromBody] Cliente cliente)
+    {
+        if (cliente is null) return BadRequest("Dados inválidos!");
+
+        await _service.AtualizarCliente(cliente);
+
+        return Ok("Cliente alterado com sucesso.");
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> Delete(int id)
+    {
+        await _service.DeletarCliente(id);
+
+        return Ok("Cliente excluído com sucesso.");
+    }
 }
