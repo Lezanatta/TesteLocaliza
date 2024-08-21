@@ -1,0 +1,138 @@
+:host{
+  width: 100%;
+  height: 90vh;
+  display: block;
+}
+
+.container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-content{
+  padding: 60px;
+  border-radius: 20px;
+  width: 90%;
+  height: 70%;
+  box-shadow: 0px 0px 16px 4px rgb(202, 202, 202);
+  overflow-y: auto;
+}
+
+.title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content-clientes {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.titulos, .valores {
+  display: flex;
+  list-style: none;
+  margin: 0;
+}
+
+.titulos{
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  padding: 20px 10px;
+}
+
+.valores li {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  gap: 10px;
+}
+
+.valores{
+  span{
+    border-radius: 50%;
+    padding: 5px 10px;
+  }
+
+  .pagos span{
+    background-color: #8baf96;
+  }
+
+  .abertos span{
+    background-color: #a6c6e0;
+  }
+
+  .atrasados span{
+    background-color: #f09eb9;
+  }
+
+}
+
+.valores:nth-child(odd) {
+  background-color: #cfcdcd; /* Cor branca */
+}
+
+.valores:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.05); /* Cor cinza claro e opaca */
+}
+
+.nome {
+  flex: 0 0 60%;
+  text-align: left;
+  margin-left: 15px;
+}
+
+.pagos, .abertos, .atrasados {
+  flex: 1;
+  text-align: center;
+  justify-content: center;
+}
+
+.acoes {
+  flex: 0 0 20%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.acoes button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.editar{
+  background-color: #007bff;
+}
+
+.excluir{
+  background-color: rgb(238, 83, 83);
+}
+
+button:hover{
+  &.editar{
+    background-color: #0056b3;
+  }
+
+  &.excluir{
+    background-color: rgb(145, 46, 46);
+  }
+}
+
+.view-inicial{
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+
+

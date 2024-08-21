@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="title">
+    <h1>Cobranças / <strong>Cliente Teste</strong></h1>
+    <div class="title-buttons">
+      <app-btn
+        [btn-text]="'Cadastrar'"
+        (submit)="cadastrarCobranca()"
+        class="large black">
+      </app-btn>
+      <app-btn
+        [btn-text]="'Cancelar'"
+        (submit)="cancelar()"
+        class="large red">
+      </app-btn>
+    </div>
+  </div>
+  @if(cobrancas){
+    <div class="main-content">
+      <ul class="titulos">
+        <li class="descricao">Descrição</li>
+        <li class="valor">Valor</li>
+        <li class="vencimento">Vencimento</li>
+        <li class="acoes">Ações</li>
+      </ul>
+      @for (cobr of cobrancas; track $index) {
+        <div class="valores">
+          <div class="descricao">{{ cobr.descricao }}
+            @if(cobr.pago == 0 && compararData(cobr.dataVencimento)){
+              <span class="alerta">ATRASADO</span>
+            }
+          </div>
+          <div class="valor">R$ {{ cobr.valor }}</div>
+          <div class="vencimento">{{ formatarData(cobr.dataVencimento)}}</div>
+          <div class="acoes">
+            <app-btn
+              [icon]="faPenToSquare"
+              (submit)="submiteEditar(cobr.idCobranca)"
+              class="blue">
+            </app-btn>
+            <app-btn
+              [icon]="faTrash"
+              (submit)="submitExcluir(cobr.idCobranca)"
+              class="red">
+            </app-btn>
+          </div>
+        </div>
+      }
+      </div>
+  }
+  @else {
+    <p>Nenhuma cobrança cadastrada!</p>
+  }
+</div>
+
+<app-confirmacao-modal
+  (confirm)="confirmDeletion()"
+  (cancel)="cancelDeletion()">
+</app-confirmacao-modal>

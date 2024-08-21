@@ -1,0 +1,17 @@
+@if(mensagem){
+  <div class="modal">
+    <nav class="nav-modal">
+      <span>{{tituloModal}}</span>
+      <button class="clear" (click)="clear()">
+        <fa-icon class="icon" [icon]="fatimes"></fa-icon>
+      </button>
+    </nav>
+    <div class="content">
+      <p>{{mensagem}}</p>
+    </div>
+  </div>
+  @if(mensagem){
+    <div class="fundo" (click)="clear()"></div>
+  }
+}
+

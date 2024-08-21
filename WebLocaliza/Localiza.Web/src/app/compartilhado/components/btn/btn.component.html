@@ -1,0 +1,12 @@
+<button
+  (click)="submit()"
+  [class]="'btn'"
+  [disabled]="disabled"
+>
+@if(btnText){
+  {{btnText}}
+}
+@else {
+  <fa-icon [icon]="icon"></fa-icon>
+}
+</button>

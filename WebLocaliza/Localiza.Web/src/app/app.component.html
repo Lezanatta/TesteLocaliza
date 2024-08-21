@@ -1,0 +1,15 @@
+@if(!usuarioLogado()){
+  @if(isPaginaLogin()){
+    <app-login></app-login>
+  }
+  @if(isPaginaCadastro()){
+    <app-cadastro></app-cadastro>
+  }
+}
+
+@else {
+  <app-header></app-header>
+  <router-outlet />
+}
+
+

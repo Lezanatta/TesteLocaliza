@@ -1,0 +1,50 @@
+<form [formGroup]="form" #formLogin="ngForm" class="dflex-center">
+  <div class="form-content">
+    <nav class="title"><h2>{{title}}</h2></nav>
+    @for (campo of campos; track $index) {
+      @if(campo.tipo != 'select'){
+        <label [for]="campo.nome">{{ campo.label }}</label>
+        <input [type]="campo.tipo" [formControlName]="campo.nome" [id]="campo.nome" required/>
+        <div class="validations-errors">
+          @if(form.get(campo.nome)?.touched && form.get(campo.nome)?.invalid){
+            @if(form.get(campo.nome)?.errors?.['required']){
+              <p>
+                {{ campo.label }} é obrigatório.
+              </p>
+
+            }
+            @else if (form.get(campo.nome)?.errors?.['email']) {
+              <p>
+                {{ campo.label }} não corresponde ao formato esperado.
+              </p>
+
+            }
+            @else if (form.get(campo.nome)?.errors?.['minlength']){
+              <p>
+                {{ campo.label }} deve ter pelo menos {{ form.get(campo.nome)?.errors?.['minlength']?.requiredLength }} caracteres.
+              </p>
+            }
+          }
+        </div>
+      }
+      @else {
+        <label [for]="campo.nome">{{ campo.label }}</label>
+        <select [formControlName]="campo.nome" [id]="campo.nome" required>
+          @for (option of campo.options; track $index) {
+            <option [value]="option.value" [selected]="option.value === campo.valorInicial">{{ option.label }}</option>
+          }
+        </select>
+      }
+    }
+    <app-btn
+      [btn-text]="TituloBtn"
+      (submit)="handleSubmit()"
+      class="black">
+    </app-btn>
+    @if(linkMenu){
+      <div class="link-content">
+        <a [routerLink]="linkMenu.rotaLink">{{ linkMenu.tituloLink }}</a>
+      </div>
+    }
+  </div>
+</form>

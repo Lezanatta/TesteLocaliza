@@ -1,0 +1,66 @@
+<app-model-mensagem
+  [tituloModal]="mensagemService.tituloModal"
+  [mensagem]="mensagemService.mensagem"
+  (close)="mensagemService.fecharModal()">
+</app-model-mensagem>
+
+<div class="container">
+  <div class="main-content">
+    <div class="title">
+      <h1>Clientes</h1>
+      <app-btn
+      [btn-text]="'Cadastrar'"
+      (submit)="cadastrarCliente()"
+      class="large black">
+    </app-btn>
+    </div>
+    @if(clientes){
+      <div class="content-clientes">
+        <ul class="titulos">
+          <li class="nome">Nome</li>
+          <li class="pagos">Pagos</li>
+          <li class="abertos">Abertos</li>
+          <li class="atrasados">Atrasados</li>
+          <li class="acoes"></li>
+        </ul>
+
+          @for (cliente of clientes; track $index) {
+            <ul class="valores">
+              <li class="nome">{{cliente.nome}}</li>
+              <li class="pagos"><span>{{cliente.pagos}}</span></li>
+              <li class="abertos"><span>{{cliente.abertos}}</span></li>
+              <li class="atrasados"><span>{{cliente.atrasados}}</span></li>
+              <li class="acoes">
+              <app-btn
+                  [icon]="faPenToSquare"
+                  (submit)="submiteEditar(cliente.id)"
+                  class="blue">
+              </app-btn>
+              <app-btn
+                [icon]="faTrash"
+                (submit)="submitExcluir(cliente.id)"
+                class="red">
+              </app-btn>
+              <app-btn
+                [btn-text]="'Cobranças'"
+                (submit)="submitCobrancas(cliente.id)"
+                class="black">
+              </app-btn>
+              </li>
+            </ul>
+          }
+      </div>
+    }
+
+    @else {
+      <p class="view-inicial">Nenhum cliente cadastrado!</p>
+    }
+  </div>
+</div>
+<app-confirmacao-modal
+  (confirm)="confirmDeletion()"
+  (cancel)="cancelDeletion()">
+</app-confirmacao-modal>
+
+
+

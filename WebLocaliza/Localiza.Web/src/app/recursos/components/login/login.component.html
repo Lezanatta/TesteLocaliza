@@ -1,0 +1,16 @@
+<app-model-mensagem
+  [tituloModal]="mensageService.tituloModal"
+  [mensagem]="mensageService.mensagem"
+  (close)="mensageService.fecharModal()">
+</app-model-mensagem>
+
+<app-form-dinamico
+  [campos]="campos"
+  [form]="form"
+  (submitForm)="submitLogin($event)"
+  [title]="TituloFormLogin"
+  [linkMenu]="link"
+  [TituloBtn]="'Entrar'"
+  class="min">
+</app-form-dinamico>
+

@@ -1,0 +1,19 @@
+<app-model-mensagem
+  [tituloModal]="mensageService.tituloModal"
+  [mensagem]="mensageService.mensagem"
+  (close)="mensageService.fecharModal()">
+</app-model-mensagem>
+
+@if(campos){
+  <app-form-dinamico
+    [campos]="campos"
+    [form]="form"
+    (submitForm)="submitEdicao($event)"
+    [title]="TituloFormLogin"
+    [linkMenu]="link"
+    [TituloBtn]="'Salvar'"
+    class="large">
+</app-form-dinamico>
+}
+
+

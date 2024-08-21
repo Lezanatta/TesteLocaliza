@@ -1,0 +1,16 @@
+<app-model-mensagem
+  [tituloModal]="mensageService.tituloModal"
+  [mensagem]="mensageService.mensagem"
+  (close)="mensageService.fecharModal()">
+</app-model-mensagem>
+
+<app-form-dinamico
+  [campos]="campos"
+  [form]="form"
+  (submitForm)="submitCadastro($event)"
+  [title]="TituloFormLogin"
+  [linkMenu]="link"
+  [TituloBtn]="'Cadastrar'"
+  class="large">
+</app-form-dinamico>
+

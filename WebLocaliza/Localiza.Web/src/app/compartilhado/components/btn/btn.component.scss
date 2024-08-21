@@ -1,0 +1,53 @@
+:host{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:host(.large) button {
+  width: 130px;
+}
+
+:host(.black) {
+  .btn{
+    background-color: rgb(48, 48, 48);
+  }
+
+  .btn:hover{
+    background-color: rgb(138, 135, 135);
+  }
+}
+
+:host(.blue) {
+  .btn{
+    background-color: rgb(27, 142, 209);
+  }
+
+  .btn:hover{
+    background-color: rgb(60, 98, 122);
+  }
+}
+
+:host(.red) {
+  .btn{
+    background-color: rgb(238, 108, 108);
+  }
+
+  .btn:hover{
+    background-color: rgb(143, 80, 80);
+  }
+}
+
+.btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  transition: 0.5s;
+  cursor: pointer;
+  color: white;
+  width: 100%;
+  padding: 8px;
+  font-size: 18px;
+}
+
