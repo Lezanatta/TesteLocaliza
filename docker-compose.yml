@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  controle.api:
+    image: ${DOCKER_REGISTRY-}controleapi
+    build:
+      context: .
+      dockerfile: Controle.Api/Dockerfile
+    ports:
+       - "5000:5000"
+
+  localizlogin:
+    image: ${DOCKER_REGISTRY-}localizlogin
+    build:
+      context: .
+      dockerfile: LocalizLogin/Dockerfile
+    ports:
+      - "5001:5001"
