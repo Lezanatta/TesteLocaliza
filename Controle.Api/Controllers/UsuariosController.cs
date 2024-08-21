@@ -7,7 +7,6 @@ namespace Controle.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-[Authorize]
 public class UsuariosController(IServiceUsuario _service) : ControllerBase
 {
     [HttpGet]
@@ -25,14 +24,14 @@ public class UsuariosController(IServiceUsuario _service) : ControllerBase
         }
     }
 
-    [HttpGet("clientes")]
-    public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuariosClientes()
+    [HttpGet("clientes/{id}")]
+    public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuarioClientes(int id)
     {
         try
         {
-            var usuariosClientes = await _service.ObterUsuariosClientes();
+            var usuarioClientes = await _service.ObterUsuariosClientes(id);
 
-            return Ok(usuariosClientes);
+            return Ok(usuarioClientes);
         }
         catch (Exception ex)
         {
@@ -43,12 +42,18 @@ public class UsuariosController(IServiceUsuario _service) : ControllerBase
     [HttpPost]
     public async Task<ActionResult> Post([FromBody] Usuario usuario)
     {
+        try
+        {
+            if (usuario is null) return BadRequest("Usuario não informado");
 
-        if (usuario is null) return BadRequest("Usuario não informado");
+            await _service.AdicionarNovoUsuario(usuario);
 
-        await _service.AdicionarNovoUsuario(usuario);
-
-        return CreatedAtAction(nameof(Get), new { }, usuario);
+            return CreatedAtAction(nameof(Get), new { }, usuario);
+        }
+        catch(Exception e)
+        {
+            return BadRequest("Erro ao cadastrar usuario");
+        }
     }
 
 }

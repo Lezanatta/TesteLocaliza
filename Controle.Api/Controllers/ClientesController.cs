@@ -1,13 +1,22 @@
 ﻿using Compartilhado.Models;
 using Controle.Api.Services.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Controle.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
+
 public class ClientesController(IServiceCliente _service) : ControllerBase
 {
+    [HttpGet("teste")]
+    public IActionResult GetTeste()
+    {
+        return Ok("Aplicação está funcionando!");
+    }
+
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Cliente>>> Get()
     {
@@ -18,14 +27,24 @@ public class ClientesController(IServiceCliente _service) : ControllerBase
         return Ok(clientes);
     }
 
-    [HttpGet("cobrancas")]
-    public async Task<ActionResult<IEnumerable<Cliente>>> GetClientesCobrancas()
+    [HttpGet("cobrancas/{usuarioId}")]
+    public async Task<ActionResult<IEnumerable<Cliente>>> GetClientesCobrancasUsuarioId(int usuarioId)
     {
-        var clientes = await _service.ObterClientesCobrancas();
+        var clientes = await _service.ObterClientesCobrancasUsuarioId(usuarioId);
 
         if (clientes is null) return NotFound("Não existem clientes cadastrados");
 
         return Ok(clientes);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<IEnumerable<Cliente>>> GetClienteId(int id)
+    {
+        var cliente = await _service.ObterClienteId(id);
+
+        if (cliente is null) return NotFound("Não existem clientes cadastrados");
+
+        return Ok(cliente);
     }
 
     [HttpPost]

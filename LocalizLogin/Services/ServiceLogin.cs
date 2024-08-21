@@ -12,7 +12,8 @@ namespace LocalizLogin.Services;
 
 public class ServiceLogin(LocalizaContext _context, IServiceCriptografia _serviceCriptografia) : IServiceLogin
 {
-    public async Task<string> Login(ModelLogin modelLogin, IConfiguration configuration)
+
+    public async Task<ResponseLogin> Login(ModelLogin modelLogin, IConfiguration configuration)
     {
         var usuarioEncontrado = await _context.Usuario.Where(usu => usu.Email == modelLogin.Email).FirstOrDefaultAsync();
 
@@ -23,7 +24,13 @@ public class ServiceLogin(LocalizaContext _context, IServiceCriptografia _servic
 
         var token = GeratTokenJwt(usuarioEncontrado, configuration);
 
-        return token;
+        return new()
+        {
+            IdUsuario = usuarioEncontrado.Id,
+            NomeUsuario = usuarioEncontrado.Nome,
+            Token = token,
+            Mensagem = "Login realizado com sucesso."
+        };
     }
 
     private static string GeratTokenJwt(Usuario usuarioEncontrado, IConfiguration configuration)

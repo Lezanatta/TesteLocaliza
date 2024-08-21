@@ -1,21 +1,34 @@
 ﻿using Compartilhado.Models;
 using Controle.Api.Services.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Controle.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
+
 public class CobrancaController(IServiceCobranca _service) : ControllerBase
 {
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<Cobranca>>> Get()
+    [HttpGet("clientes/{id}")]
+    public async Task<ActionResult<IEnumerable<Cobranca>>> Get(int id)
     {
-        var cobrancas = await _service.ObterCobrancasClientes();
+        var cobrancas = await _service.ObterCobrancasClienteId(id);
 
         if(cobrancas is null) return NotFound("Não possui cobrancas cadastradas.");
 
         return Ok(cobrancas);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<IEnumerable<Cobranca>>> GetCobrancaId(int id)
+    {
+        var cobranca = await _service.ObterCobrancaId(id);
+
+        if (cobranca is null) return NotFound("Não possui cobrancas cadastradas.");
+
+        return Ok(cobranca);
     }
 
     [HttpPost]
@@ -25,7 +38,7 @@ public class CobrancaController(IServiceCobranca _service) : ControllerBase
         
         await _service.AdicionarNovaCobranca(cobranca);
 
-        return CreatedAtAction(nameof(Get), new { }, cobranca);
+        return CreatedAtAction(nameof(Get), new { id = cobranca.IdCobranca }, cobranca);
     }
 
     [HttpPut]

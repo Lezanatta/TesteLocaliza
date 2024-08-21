@@ -24,9 +24,9 @@ public class ServiceUsuario(IUsuarioRepository _repository, IServiceCriptografia
         throw new Exception("Não existem usuários cadastrados");
     }
 
-    public async Task<IEnumerable<Usuario>> ObterUsuariosClientes()
+    public async Task<IEnumerable<Usuario>> ObterUsuariosClientes(int id)
     {
-        var usuariosClientes = await _repository.GetUsuariosClientes();
+        var usuariosClientes = await _repository.GetUsuariosClientes(id);
 
         if (usuariosClientes is not null) return usuariosClientes;
 

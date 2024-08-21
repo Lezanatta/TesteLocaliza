@@ -3,7 +3,7 @@
 namespace Compartilhado.Models;
 public class Cobranca
 {
-    public int IdCobranca{ get; set; }
+    public int? IdCobranca{ get; set; }
     public string? Descricao { get; set; }
     public decimal Valor{ get; set; }
     public DateTime DataVencimento { get; set; }

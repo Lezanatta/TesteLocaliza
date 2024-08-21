@@ -10,8 +10,8 @@ public class UsuarioRepository(LocalizaContext _context) : IUsuarioRepository
     public async Task<IEnumerable<Usuario>> GetUsuarios() 
         => await _context.Usuario.ToListAsync();
 
-    public async Task<IEnumerable<Usuario>> GetUsuariosClientes() 
-        => await _context.Usuario.Include(c => c.Clientes).ToListAsync();
+    public async Task<IEnumerable<Usuario>> GetUsuariosClientes(int id) 
+        => await _context.Usuario.Where(usu => usu.Id == id).Include(c => c.Clientes).ToListAsync();
 
     public async Task CriarUsuario(Usuario usuario)
     {

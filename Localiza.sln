@@ -5,7 +5,11 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controle.Api", "Controle.Api\Controle.Api.csproj", "{EE923FB4-8C8D-4DD0-A03D-402D28DD8987}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalizLogin", "LocalizLogin\LocalizLogin.csproj", "{72195FD2-517B-447E-A31A-32DB29535ADA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocalizLogin", "LocalizLogin\LocalizLogin.csproj", "{72195FD2-517B-447E-A31A-32DB29535ADA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compartilhado", "Compartilhado\Compartilhado.csproj", "{3298E3E1-A283-4F7E-9806-66977BC85E9E}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{DF9E387F-84BE-40EC-81C0-99B96D734F84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{72195FD2-517B-447E-A31A-32DB29535ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72195FD2-517B-447E-A31A-32DB29535ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72195FD2-517B-447E-A31A-32DB29535ADA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3298E3E1-A283-4F7E-9806-66977BC85E9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3298E3E1-A283-4F7E-9806-66977BC85E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3298E3E1-A283-4F7E-9806-66977BC85E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3298E3E1-A283-4F7E-9806-66977BC85E9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF9E387F-84BE-40EC-81C0-99B96D734F84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF9E387F-84BE-40EC-81C0-99B96D734F84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF9E387F-84BE-40EC-81C0-99B96D734F84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF9E387F-84BE-40EC-81C0-99B96D734F84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

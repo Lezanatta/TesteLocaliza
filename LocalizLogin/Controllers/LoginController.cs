@@ -8,24 +8,24 @@ namespace LocalizLogin.Controllers;
 [ApiController]
 public class LoginController(IServiceLogin _loginService, IConfiguration _config) : ControllerBase
 {
-    [HttpPost("login")]
+    [HttpPost]  
     public async Task<ActionResult> Login(ModelLogin modelLogin)
     {
         try
         {
             if (modelLogin.Email is null || modelLogin.Senha is null) return NotFound("Dados não preenchidos.");
 
-            var resultado = await _loginService.Login(modelLogin, _config);
+            var response = await _loginService.Login(modelLogin, _config);
 
-            return Ok(new { Mensagem = "Login realizado com sucesso.", Token = resultado});
+            return Ok(response);
         }
         catch(InvalidOperationException ex)
         {
-            return Unauthorized(ex.Message);
+            return Unauthorized(new { Mensagem = ex.Message, Token = string.Empty });
         }
         catch (Exception)
         {
-            return Unauthorized("Erro ao realizar o login.");
+            return Unauthorized(new { Mensagem = "Login realizado com sucesso.", Token = string.Empty });
         }
     }
 }
